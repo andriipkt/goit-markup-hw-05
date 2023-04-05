@@ -91,7 +91,9 @@
             for Your Business
           </h1>
 
-          <button class="hero-button" type="button">Order Service</button>
+          <button class="hero-button" type="button" data-modal-open>
+            Order Service
+          </button>
         </div>
       </section>
 
@@ -517,8 +519,15 @@
       </div>
     </footer>
 
-    <div class="backdrop">
-      <button type="button" class="modal-close-btn"></button>
+    <div class="backdrop" data-modal>
+      <div class="modal">
+        <button type="button" class="modal-close-btn" data-modal-close>
+          <svg class="modal-close-btn-icon">
+            <use href="./images/symbol-defs.svg#icon-close-modal"></use>
+          </svg>
+        </button>
+      </div>
     </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>

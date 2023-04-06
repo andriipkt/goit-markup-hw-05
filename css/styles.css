@@ -96,11 +96,6 @@ button {
   margin-right: 40px;
 }
 
-.menu-item {
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-
 .address-list {
   display: flex;
 }
@@ -241,12 +236,37 @@ button {
 /* ================ header ================ */
 
 .menu-link {
+  display: block;
   padding-top: 24px;
   padding-bottom: 24px;
+
+  position: relative;
 
   font-weight: 500;
   color: var(--dark);
   transition: color var(--transition);
+}
+
+.menu-link::after {
+  content: '';
+
+  position: absolute;
+  bottom: calc(0% - 1px);
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--pressed-state);
+
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.menu-link.menu-link-active::after,
+.menu-link:hover::after,
+.menu-link:focus::after {
+  opacity: 1;
 }
 
 .menu-link:hover,
@@ -305,6 +325,8 @@ button {
   color: var(--white-background);
   background: var(--primary-brand);
   cursor: pointer;
+
+  transition: background-color var(--transition), border-color var(--transition);
 }
 
 .hero-button:hover,
@@ -393,15 +415,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.social-link-icon {
-  fill: #ffffff;
+  transition: background-color var(--transition);
 }
 
 .social-link:hover,
 .social-link:focus {
   background-color: var(--pressed-state);
+}
+
+.social-link-icon {
+  fill: #ffffff;
 }
 
 .fifth-section {
@@ -419,11 +443,6 @@ button {
   margin-right: 24px;
 }
 
-.company-list-item:hover,
-.company-list-item:focus {
-  color: var(--pressed-state);
-}
-
 .company-logo {
   display: flex;
   align-items: center;
@@ -432,11 +451,17 @@ button {
   border-radius: 4px;
   border: 1px solid var(--subtle-Text);
   fill: var(--subtle-Text);
+
+  transition: border-color var(--transition);
 }
 
 .company-logo:hover,
 .company-logo:focus {
   border-color: var(--pressed-state);
+}
+
+.company-svg {
+  transition: fill var(--transition);
 }
 
 .company-logo:hover .company-svg,
@@ -461,6 +486,9 @@ button {
   color: var(--primary-brand);
   border: var(--accent);
   cursor: pointer;
+
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition), box-shadow var(--transition);
 }
 
 .button:hover,
@@ -473,7 +501,7 @@ button {
 }
 
 .project {
-  width: 360px;
+  transition: box-shadow var(--transition);
 }
 
 .project:hover,
@@ -542,6 +570,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: background-color var(--transition);
 }
 
 .footer-social-link:hover,
@@ -585,11 +615,17 @@ button {
   pointer-events: none;
 }
 
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.4);
+}
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--transition);
+
   width: 406px;
   height: 576px;
   background-color: var(--modal-background);
